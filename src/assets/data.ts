@@ -1,4 +1,14 @@
-export default [
+export interface productInfo {
+  id: number,
+  brand: string,
+  name: string,
+  description: string,
+  img: string,
+  price: number, 
+  customerReview: number
+}
+
+const data: Array<productInfo> = [
   {
     id: 1,
     brand: 'Dell',
@@ -108,3 +118,5 @@ export default [
     customerReview: 1.2
   }
 ]
+
+export default data;
