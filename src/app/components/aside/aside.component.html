@@ -4,15 +4,17 @@
     <h4 class="brand-filter-title">Marque</h4>
     <form class="form">
       <ul>
-        <li class="brand-item">
-          <input type="checkbox" value="">
-          <label>
-            <span>ZZ</span>
-            <span>VV</span>
+        <li *ngFor='let item of count | keyvalue'
+            class="brand-item"
+            (change)='handleBrandSelection($event)'>
+          <input type="checkbox" [value]="item.key" [id]="item.key">
+          <label [for]="item.key">
+            <span>{{item.key}}</span>
+            <span>{{item.value}}</span>
           </label>
         </li>
       </ul>
-      <button type="submit">Valider</button>
+      <button (click)='submitBrandSelection($event)' type="submit">Valider</button>
     </form>
   </div>
 </aside>
