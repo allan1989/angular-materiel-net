@@ -14,4 +14,20 @@
 </div>
 <div class="main container">
   <app-aside></app-aside>
+  <section class="products-area">
+    <div class="select-area">
+      <select>
+        <option disabled="disabled">Trier les produits</option>
+        <option value="brand">Marque</option>
+        <option value="asc">Du - cher au + cher</option>
+        <option value="desc">Du + cher au - moins</option>
+        <option value="reviews">Note moyenne</option>
+      </select>
+    </div>
+    <div class="produts-list">
+      <ng-container *ngFor='let product of products'>
+        <app-product [product]='product'></app-product>
+      </ng-container>
+    </div>
+  </section>
 </div>

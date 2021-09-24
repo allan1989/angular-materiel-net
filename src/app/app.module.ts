@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AsideComponent } from './components/aside/aside.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AsideComponent
+    AsideComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule

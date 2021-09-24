@@ -6,6 +6,7 @@ import  data  from '../../assets/data';
 })
 export class ProductsService {
   count: any = {};
+  selected: any[] = data;
 
   constructor() {}
 
@@ -14,6 +15,10 @@ export class ProductsService {
       this.count[el.brand] = (this.count[el.brand] || 0) + 1
     });
     return this.count;
+  }
+
+  getProducts(){
+    return this.selected;
   }
 
 }

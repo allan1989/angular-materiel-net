@@ -20,7 +20,6 @@
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   max-width: 1340px;
   margin: 0 auto;
 }
@@ -55,4 +54,24 @@
     height: 1px;
     background-color: #f1001c;
   }
+}
+
+.products-area {
+  display: inline-block;
+  vertical-align: top;
+  width: 975px;
+}
+
+.select-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+
+  select {
+    padding: 10px;
+  }
+}
+
+.products-list {
+  margin-bottom: 50px;
 }
