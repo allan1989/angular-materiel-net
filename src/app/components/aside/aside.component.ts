@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class AsideComponent implements OnInit {
 
   count:any = [];
-  selection:any[] = [];
+  selection:string[] = [];
 
   constructor(private ProductsService: ProductsService) { }
 
@@ -26,7 +26,7 @@ export class AsideComponent implements OnInit {
   }
   submitBrandSelection($event:any){
     $event.preventDefault();
-    console.log(this.selection)
+    this.ProductsService.filter(this.selection)
   }
 
 }
