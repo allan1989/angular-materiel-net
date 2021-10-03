@@ -16,7 +16,7 @@
   <app-aside></app-aside>
   <section class="products-area">
     <div class="select-area">
-      <select>
+      <select (change)="onSort($event)">
         <option disabled="disabled">Trier les produits</option>
         <option value="brand">Marque</option>
         <option value="asc">Du - cher au + cher</option>
