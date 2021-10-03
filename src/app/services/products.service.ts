@@ -10,6 +10,7 @@ export class ProductsService {
   count: any = {};
   subject = new BehaviorSubject<productInfo[]>(data);
   data: productInfo[] = [];
+  sortOption: string = 'brand';
 
   constructor() {}
 
@@ -21,23 +22,44 @@ export class ProductsService {
   }
 
   getProducts():productInfo[]{
-    //this.subject.subscribe(data => this.data = data);
-    this.subject.next(data);
-    return this.subject.value;
+    this.subject.next(this.sortProducts(data, this.sortOption));
+    return this.subject.getValue();
   }
 
   filter(brands:any):productInfo[]{
     if(brands.length === 0 ) {
       return this.getProducts();
     }
-    //this.subject.subscribe(data => this.data = data);
     this.data = data.filter(el => brands.indexOf(el.brand) > -1);
-    this.subject.next(this.data);
-    return this.subject.value;
+    this.subject.next(this.sortProducts(this.data, this.sortOption));
+    return this.subject.getValue();
   }
 
-  getProductsObs(): Observable<any> {
+  getProductsObs(): Observable<productInfo[]> {
     return this.subject.asObservable();
+  }
+
+  sortProducts(arr: productInfo[], sorting:string):productInfo[] {
+    switch(sorting) {
+      case 'brand' :
+        this.sortOption = sorting;
+        return arr.sort((a,b) => {
+          if(a.brand.toLowerCase() > b.brand.toLowerCase()) return 1;
+          if(a.brand.toLowerCase() < b.brand.toLowerCase()) return -1;
+          return 0
+        })
+        case 'asc':
+          this.sortOption = sorting;
+          return arr.sort((a,b) => a.price - b.price)
+        case 'desc':
+          this.sortOption = sorting;
+          return arr.sort((a,b) => b.price - a.price)
+        case 'reviews':
+          this.sortOption = sorting;
+          return arr.sort((a,b) => b.customerReview - a.customerReview)  
+        default:
+          return arr 
+    }
   }
 
 }
