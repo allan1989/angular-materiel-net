@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import  data  from '../../assets/data';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { productInfo } from '../../assets/data';
 
 @Injectable({
@@ -35,10 +35,6 @@ export class ProductsService {
     return this.subject.getValue();
   }
 
-  getProductsObs(): Observable<productInfo[]> {
-    return this.subject.asObservable();
-  }
-
   sortProducts(arr: productInfo[], sorting:string):productInfo[] {
     switch(sorting) {
       case 'brand' :
@@ -61,5 +57,4 @@ export class ProductsService {
           return arr 
     }
   }
-
 }

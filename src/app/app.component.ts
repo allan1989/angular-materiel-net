@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './services/products.service';
-import { Subscription } from 'rxjs';
 import { productInfo } from 'src/assets/data';
 
 @Component({
@@ -10,9 +9,8 @@ import { productInfo } from 'src/assets/data';
 })
 export class AppComponent implements OnInit{
   public products: productInfo[] = [];
-  public subscription: Subscription;
   constructor(private ProductsService: ProductsService){
-    this.subscription = this.ProductsService.getProductsObs().subscribe(data => this.products = data)
+    this.ProductsService.subject.subscribe(data => this.products = data)
   }
 
   ngOnInit() {
